@@ -2,6 +2,7 @@
 
 ## inflight.$Closure1-1.js
 ```js
+"use strict";
 module.exports = function({  }) {
   class $Closure1 {
     constructor({  }) {
@@ -20,6 +21,7 @@ module.exports = function({  }) {
 
 ## inflight.$Closure2-1.js
 ```js
+"use strict";
 module.exports = function({  }) {
   class $Closure2 {
     constructor({  }) {
@@ -38,6 +40,7 @@ module.exports = function({  }) {
 
 ## inflight.$Closure3-1.js
 ```js
+"use strict";
 module.exports = function({  }) {
   class $Closure3 {
     constructor({  }) {
@@ -56,6 +59,7 @@ module.exports = function({  }) {
 
 ## inflight.$Closure4-1.js
 ```js
+"use strict";
 module.exports = function({ $other }) {
   class $Closure4 {
     constructor({  }) {
@@ -64,7 +68,7 @@ module.exports = function({ $other }) {
       return $obj;
     }
     async handle(key, event) {
-      (await $other.put(String.raw({ raw: ["last_", "_key"] }, event),key));
+      (await $other.put(String.raw({ raw: ["last_", "_key"] }, event), key));
     }
   }
   return $Closure4;
@@ -74,6 +78,7 @@ module.exports = function({ $other }) {
 
 ## inflight.$Closure5-1.js
 ```js
+"use strict";
 module.exports = function({  }) {
   class $Closure5 {
     constructor({  }) {
@@ -92,6 +97,7 @@ module.exports = function({  }) {
 
 ## inflight.$Closure6-1.js
 ```js
+"use strict";
 module.exports = function({ $b }) {
   class $Closure6 {
     constructor({  }) {
@@ -100,10 +106,10 @@ module.exports = function({ $b }) {
       return $obj;
     }
     async handle() {
-      (await $b.put("a","1"));
-      (await $b.put("b","1"));
-      (await $b.put("b","100"));
-      (await $b.put("c","1"));
+      (await $b.put("a", "1"));
+      (await $b.put("b", "1"));
+      (await $b.put("b", "100"));
+      (await $b.put("c", "1"));
       (await $b.delete("c"));
     }
   }
@@ -125,14 +131,14 @@ module.exports = function({ $b }) {
       "root": {
         "Default": {
           "cloud.TestRunner": {
-            "TestFunctionArns": "WING_TEST_RUNNER_FUNCTION_ARNS"
+            "TestFunctionArns": "WING_TEST_RUNNER_FUNCTION_IDENTIFIERS"
           }
         }
       }
     }
   },
   "output": {
-    "WING_TEST_RUNNER_FUNCTION_ARNS": {
+    "WING_TEST_RUNNER_FUNCTION_IDENTIFIERS": {
       "value": "[]"
     }
   },
@@ -142,6 +148,98 @@ module.exports = function({ $b }) {
     ]
   },
   "resource": {
+    "aws_cloudwatch_log_group": {
+      "b_b-oncreate-OnMessage-1d3b2039_CloudwatchLogGroup_8FFC7F16": {
+        "//": {
+          "metadata": {
+            "path": "root/Default/Default/b/b-oncreate-OnMessage-1d3b2039/CloudwatchLogGroup",
+            "uniqueId": "b_b-oncreate-OnMessage-1d3b2039_CloudwatchLogGroup_8FFC7F16"
+          }
+        },
+        "name": "/aws/lambda/b-oncreate-OnMessage-1d3b2039-c8a821e7",
+        "retention_in_days": 30
+      },
+      "b_b-oncreate-OnMessage-a729fee3_CloudwatchLogGroup_4B419017": {
+        "//": {
+          "metadata": {
+            "path": "root/Default/Default/b/b-oncreate-OnMessage-a729fee3/CloudwatchLogGroup",
+            "uniqueId": "b_b-oncreate-OnMessage-a729fee3_CloudwatchLogGroup_4B419017"
+          }
+        },
+        "name": "/aws/lambda/b-oncreate-OnMessage-a729fee3-c81091e7",
+        "retention_in_days": 30
+      },
+      "b_b-ondelete-OnMessage-4b2cd998_CloudwatchLogGroup_20713640": {
+        "//": {
+          "metadata": {
+            "path": "root/Default/Default/b/b-ondelete-OnMessage-4b2cd998/CloudwatchLogGroup",
+            "uniqueId": "b_b-ondelete-OnMessage-4b2cd998_CloudwatchLogGroup_20713640"
+          }
+        },
+        "name": "/aws/lambda/b-ondelete-OnMessage-4b2cd998-c8718454",
+        "retention_in_days": 30
+      },
+      "b_b-ondelete-OnMessage-b83da9f8_CloudwatchLogGroup_E154ADD8": {
+        "//": {
+          "metadata": {
+            "path": "root/Default/Default/b/b-ondelete-OnMessage-b83da9f8/CloudwatchLogGroup",
+            "uniqueId": "b_b-ondelete-OnMessage-b83da9f8_CloudwatchLogGroup_E154ADD8"
+          }
+        },
+        "name": "/aws/lambda/b-ondelete-OnMessage-b83da9f8-c80fdb5a",
+        "retention_in_days": 30
+      },
+      "b_b-onupdate-OnMessage-2dce4026_CloudwatchLogGroup_C7418EC8": {
+        "//": {
+          "metadata": {
+            "path": "root/Default/Default/b/b-onupdate-OnMessage-2dce4026/CloudwatchLogGroup",
+            "uniqueId": "b_b-onupdate-OnMessage-2dce4026_CloudwatchLogGroup_C7418EC8"
+          }
+        },
+        "name": "/aws/lambda/b-onupdate-OnMessage-2dce4026-c8164eef",
+        "retention_in_days": 30
+      },
+      "b_b-onupdate-OnMessage-b03e6c67_CloudwatchLogGroup_32CDCE27": {
+        "//": {
+          "metadata": {
+            "path": "root/Default/Default/b/b-onupdate-OnMessage-b03e6c67/CloudwatchLogGroup",
+            "uniqueId": "b_b-onupdate-OnMessage-b03e6c67_CloudwatchLogGroup_32CDCE27"
+          }
+        },
+        "name": "/aws/lambda/b-onupdate-OnMessage-b03e6c67-c81eb9cc",
+        "retention_in_days": 30
+      },
+      "other_other-oncreate-OnMessage-2b1e14fd_CloudwatchLogGroup_C1E56AD9": {
+        "//": {
+          "metadata": {
+            "path": "root/Default/Default/other/other-oncreate-OnMessage-2b1e14fd/CloudwatchLogGroup",
+            "uniqueId": "other_other-oncreate-OnMessage-2b1e14fd_CloudwatchLogGroup_C1E56AD9"
+          }
+        },
+        "name": "/aws/lambda/other-oncreate-OnMessage-2b1e14fd-c8a9cff0",
+        "retention_in_days": 30
+      },
+      "other_other-ondelete-OnMessage-9bef38d2_CloudwatchLogGroup_B0943848": {
+        "//": {
+          "metadata": {
+            "path": "root/Default/Default/other/other-ondelete-OnMessage-9bef38d2/CloudwatchLogGroup",
+            "uniqueId": "other_other-ondelete-OnMessage-9bef38d2_CloudwatchLogGroup_B0943848"
+          }
+        },
+        "name": "/aws/lambda/other-ondelete-OnMessage-9bef38d2-c8c0555a",
+        "retention_in_days": 30
+      },
+      "other_other-onupdate-OnMessage-bffa2a20_CloudwatchLogGroup_22FF7D38": {
+        "//": {
+          "metadata": {
+            "path": "root/Default/Default/other/other-onupdate-OnMessage-bffa2a20/CloudwatchLogGroup",
+            "uniqueId": "other_other-onupdate-OnMessage-bffa2a20_CloudwatchLogGroup_22FF7D38"
+          }
+        },
+        "name": "/aws/lambda/other-onupdate-OnMessage-bffa2a20-c85595aa",
+        "retention_in_days": 30
+      }
+    },
     "aws_iam_role": {
       "b_b-oncreate-OnMessage-1d3b2039_IamRole_BD50D914": {
         "//": {
@@ -433,7 +531,7 @@ module.exports = function({ $b }) {
         "runtime": "nodejs18.x",
         "s3_bucket": "${aws_s3_bucket.Code.bucket}",
         "s3_key": "${aws_s3_object.b_b-oncreate-OnMessage-1d3b2039_S3Object_5BB7AE5C.key}",
-        "timeout": 30,
+        "timeout": 60,
         "vpc_config": {
           "security_group_ids": [],
           "subnet_ids": []
@@ -463,7 +561,7 @@ module.exports = function({ $b }) {
         "runtime": "nodejs18.x",
         "s3_bucket": "${aws_s3_bucket.Code.bucket}",
         "s3_key": "${aws_s3_object.b_b-oncreate-OnMessage-a729fee3_S3Object_B8C2B6B3.key}",
-        "timeout": 30,
+        "timeout": 60,
         "vpc_config": {
           "security_group_ids": [],
           "subnet_ids": []
@@ -493,7 +591,7 @@ module.exports = function({ $b }) {
         "runtime": "nodejs18.x",
         "s3_bucket": "${aws_s3_bucket.Code.bucket}",
         "s3_key": "${aws_s3_object.b_b-ondelete-OnMessage-4b2cd998_S3Object_BCCA868F.key}",
-        "timeout": 30,
+        "timeout": 60,
         "vpc_config": {
           "security_group_ids": [],
           "subnet_ids": []
@@ -522,7 +620,7 @@ module.exports = function({ $b }) {
         "runtime": "nodejs18.x",
         "s3_bucket": "${aws_s3_bucket.Code.bucket}",
         "s3_key": "${aws_s3_object.b_b-ondelete-OnMessage-b83da9f8_S3Object_858C307E.key}",
-        "timeout": 30,
+        "timeout": 60,
         "vpc_config": {
           "security_group_ids": [],
           "subnet_ids": []
@@ -551,7 +649,7 @@ module.exports = function({ $b }) {
         "runtime": "nodejs18.x",
         "s3_bucket": "${aws_s3_bucket.Code.bucket}",
         "s3_key": "${aws_s3_object.b_b-onupdate-OnMessage-2dce4026_S3Object_F76307CF.key}",
-        "timeout": 30,
+        "timeout": 60,
         "vpc_config": {
           "security_group_ids": [],
           "subnet_ids": []
@@ -581,7 +679,7 @@ module.exports = function({ $b }) {
         "runtime": "nodejs18.x",
         "s3_bucket": "${aws_s3_bucket.Code.bucket}",
         "s3_key": "${aws_s3_object.b_b-onupdate-OnMessage-b03e6c67_S3Object_F8696A8D.key}",
-        "timeout": 30,
+        "timeout": 60,
         "vpc_config": {
           "security_group_ids": [],
           "subnet_ids": []
@@ -610,7 +708,7 @@ module.exports = function({ $b }) {
         "runtime": "nodejs18.x",
         "s3_bucket": "${aws_s3_bucket.Code.bucket}",
         "s3_key": "${aws_s3_object.other_other-oncreate-OnMessage-2b1e14fd_S3Object_493FA326.key}",
-        "timeout": 30,
+        "timeout": 60,
         "vpc_config": {
           "security_group_ids": [],
           "subnet_ids": []
@@ -639,7 +737,7 @@ module.exports = function({ $b }) {
         "runtime": "nodejs18.x",
         "s3_bucket": "${aws_s3_bucket.Code.bucket}",
         "s3_key": "${aws_s3_object.other_other-ondelete-OnMessage-9bef38d2_S3Object_DE8DCF2D.key}",
-        "timeout": 30,
+        "timeout": 60,
         "vpc_config": {
           "security_group_ids": [],
           "subnet_ids": []
@@ -668,7 +766,7 @@ module.exports = function({ $b }) {
         "runtime": "nodejs18.x",
         "s3_bucket": "${aws_s3_bucket.Code.bucket}",
         "s3_key": "${aws_s3_object.other_other-onupdate-OnMessage-bffa2a20_S3Object_EFC38FB1.key}",
-        "timeout": 30,
+        "timeout": 60,
         "vpc_config": {
           "security_group_ids": [],
           "subnet_ids": []
@@ -1218,6 +1316,7 @@ module.exports = function({ $b }) {
 
 ## preflight.js
 ```js
+"use strict";
 const $stdlib = require('@winglang/sdk');
 const $plugins = ((s) => !s ? [] : s.split(';'))(process.env.WING_PLUGIN_PATHS);
 const $outdir = process.env.WING_SYNTH_DIR ?? ".";
@@ -1225,11 +1324,11 @@ const $wing_is_test = process.env.WING_IS_TEST === "true";
 const std = $stdlib.std;
 const cloud = $stdlib.cloud;
 class $Root extends $stdlib.std.Resource {
-  constructor(scope, id) {
-    super(scope, id);
+  constructor($scope, $id) {
+    super($scope, $id);
     class $Closure1 extends $stdlib.std.Resource {
-      constructor(scope, id, ) {
-        super(scope, id);
+      constructor($scope, $id, ) {
+        super($scope, $id);
         (std.Node.of(this)).hidden = true;
       }
       static _toInflightType(context) {
@@ -1249,13 +1348,13 @@ class $Root extends $stdlib.std.Resource {
           })())
         `;
       }
-      _getInflightOps() {
+      _supportedOps() {
         return ["handle", "$inflight_init"];
       }
     }
     class $Closure2 extends $stdlib.std.Resource {
-      constructor(scope, id, ) {
-        super(scope, id);
+      constructor($scope, $id, ) {
+        super($scope, $id);
         (std.Node.of(this)).hidden = true;
       }
       static _toInflightType(context) {
@@ -1275,13 +1374,13 @@ class $Root extends $stdlib.std.Resource {
           })())
         `;
       }
-      _getInflightOps() {
+      _supportedOps() {
         return ["handle", "$inflight_init"];
       }
     }
     class $Closure3 extends $stdlib.std.Resource {
-      constructor(scope, id, ) {
-        super(scope, id);
+      constructor($scope, $id, ) {
+        super($scope, $id);
         (std.Node.of(this)).hidden = true;
       }
       static _toInflightType(context) {
@@ -1301,13 +1400,13 @@ class $Root extends $stdlib.std.Resource {
           })())
         `;
       }
-      _getInflightOps() {
+      _supportedOps() {
         return ["handle", "$inflight_init"];
       }
     }
     class $Closure4 extends $stdlib.std.Resource {
-      constructor(scope, id, ) {
-        super(scope, id);
+      constructor($scope, $id, ) {
+        super($scope, $id);
         (std.Node.of(this)).hidden = true;
       }
       static _toInflightType(context) {
@@ -1328,19 +1427,19 @@ class $Root extends $stdlib.std.Resource {
           })())
         `;
       }
-      _getInflightOps() {
+      _supportedOps() {
         return ["handle", "$inflight_init"];
       }
-      _registerBind(host, ops) {
+      _registerOnLift(host, ops) {
         if (ops.includes("handle")) {
-          $Closure4._registerBindObject(other, host, ["put"]);
+          $Closure4._registerOnLiftObject(other, host, ["put"]);
         }
-        super._registerBind(host, ops);
+        super._registerOnLift(host, ops);
       }
     }
     class $Closure5 extends $stdlib.std.Resource {
-      constructor(scope, id, ) {
-        super(scope, id);
+      constructor($scope, $id, ) {
+        super($scope, $id);
         (std.Node.of(this)).hidden = true;
       }
       static _toInflightType(context) {
@@ -1360,13 +1459,13 @@ class $Root extends $stdlib.std.Resource {
           })())
         `;
       }
-      _getInflightOps() {
+      _supportedOps() {
         return ["handle", "$inflight_init"];
       }
     }
     class $Closure6 extends $stdlib.std.Resource {
-      constructor(scope, id, ) {
-        super(scope, id);
+      constructor($scope, $id, ) {
+        super($scope, $id);
         (std.Node.of(this)).hidden = true;
       }
       static _toInflightType(context) {
@@ -1387,24 +1486,24 @@ class $Root extends $stdlib.std.Resource {
           })())
         `;
       }
-      _getInflightOps() {
+      _supportedOps() {
         return ["handle", "$inflight_init"];
       }
-      _registerBind(host, ops) {
+      _registerOnLift(host, ops) {
         if (ops.includes("handle")) {
-          $Closure6._registerBindObject(b, host, ["delete", "put"]);
+          $Closure6._registerOnLiftObject(b, host, ["delete", "put"]);
         }
-        super._registerBind(host, ops);
+        super._registerOnLift(host, ops);
       }
     }
-    const other = this.node.root.newAbstract("@winglang/sdk.cloud.Bucket",this,"other");
-    const b = this.node.root.newAbstract("@winglang/sdk.cloud.Bucket",this,"b");
-    (b.onDelete(new $Closure1(this,"$Closure1")));
-    (b.onUpdate(new $Closure2(this,"$Closure2")));
-    (b.onCreate(new $Closure3(this,"$Closure3")));
-    (b.onEvent(new $Closure4(this,"$Closure4")));
-    (other.onEvent(new $Closure5(this,"$Closure5")));
-    this.node.root.new("@winglang/sdk.std.Test",std.Test,this,"test:putting and deleting from a bucket to trigger bucket events",new $Closure6(this,"$Closure6"));
+    const other = this.node.root.newAbstract("@winglang/sdk.cloud.Bucket",this, "other");
+    const b = this.node.root.newAbstract("@winglang/sdk.cloud.Bucket",this, "b");
+    (b.onDelete(new $Closure1(this, "$Closure1")));
+    (b.onUpdate(new $Closure2(this, "$Closure2")));
+    (b.onCreate(new $Closure3(this, "$Closure3")));
+    (b.onEvent(new $Closure4(this, "$Closure4")));
+    (other.onEvent(new $Closure5(this, "$Closure5")));
+    this.node.root.new("@winglang/sdk.std.Test",std.Test,this, "test:putting and deleting from a bucket to trigger bucket events", new $Closure6(this, "$Closure6"));
   }
 }
 const $App = $stdlib.core.App.for(process.env.WING_TARGET);

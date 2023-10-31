@@ -92,8 +92,8 @@ test("bucket with two preflight files", () => {
   // GIVEN
   const app = new tfazure.App({ outdir: mkdtemp(), ...AZURE_APP_OPTS });
   const bucket = Bucket._newBucket(app, "my_bucket", { public: true });
-  bucket.addFile("file1.txt", "../testFiles/test1.txt");
-  bucket.addFile("file2.txt", "../testFiles/test2.txt");
+  bucket.addFile("file1.txt", "../test-files/test1.txt");
+  bucket.addFile("file2.txt", "../test-files/test2.txt");
   const output = app.synth();
 
   // THEN
@@ -163,6 +163,6 @@ test("bucket onEvent is not implemented yet", () => {
 
   // THEN
   expect(error).toBe(
-    "on_event method isn't implemented yet on the current target."
+    "onEvent method isn't implemented yet on the current target.\nFor more information see: https://github.com/winglang/wing/issues/1954.\nContributions welcome ❤️"
   );
 });

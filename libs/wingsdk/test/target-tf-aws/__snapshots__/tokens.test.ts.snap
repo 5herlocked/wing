@@ -27,7 +27,7 @@ exports[`captures tokens 2`] = `
     },
   },
   "output": {
-    "WING_TEST_RUNNER_FUNCTION_ARNS": {
+    "WING_TEST_RUNNER_FUNCTION_IDENTIFIERS": {
       "value": "[]",
     },
   },
@@ -54,6 +54,12 @@ exports[`captures tokens 2`] = `
         "deployment_id": "\${aws_api_gateway_deployment.Api_api_deployment_7FB64CC4.id}",
         "rest_api_id": "\${aws_api_gateway_rest_api.Api_api_91C07D84.id}",
         "stage_name": "prod",
+      },
+    },
+    "aws_cloudwatch_log_group": {
+      "Api_Api-OnRequest-c5395e41_CloudwatchLogGroup_79C714F7": {
+        "name": "/aws/lambda/Api-OnRequest-c5395e41-c8f26cae",
+        "retention_in_days": 30,
       },
     },
     "aws_iam_role": {
@@ -93,7 +99,7 @@ exports[`captures tokens 2`] = `
         "runtime": "nodejs18.x",
         "s3_bucket": "\${aws_s3_bucket.Code.bucket}",
         "s3_key": "\${aws_s3_object.Api_Api-OnRequest-c5395e41_S3Object_D564F39C.key}",
-        "timeout": 30,
+        "timeout": 60,
         "vpc_config": {
           "security_group_ids": [],
           "subnet_ids": [],
