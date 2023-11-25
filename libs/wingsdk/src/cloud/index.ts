@@ -8,5 +8,6 @@ export * from "./queue";
 export * from "./schedule";
 export * from "./secret";
 export * from "./service";
+export * from "./stream";
 export * from "./topic";
 export * from "./website";
