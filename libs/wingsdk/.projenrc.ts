@@ -71,6 +71,7 @@ const project = new cdk.JsiiProject({
     "@aws-sdk/client-secrets-manager@3.438.0",
     "@aws-sdk/client-sqs@3.438.0",
     "@aws-sdk/client-sns@3.438.0",
+    "@aws-sdk/client-kinesis@3.438.0",
     "@aws-sdk/types@3.433.0",
     "@smithy/util-stream@2.0.17",
     "@smithy/util-utf8@2.0.0",
