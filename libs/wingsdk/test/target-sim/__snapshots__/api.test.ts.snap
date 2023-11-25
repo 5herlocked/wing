@@ -91,8 +91,8 @@ return class Handler {
         "attrs": {},
         "path": "root/my_api/ApiEventMapping-e645076f",
         "props": {
-          "publisher": "\${root/my_api#attrs.handle}",
-          "subscriber": "\${root/my_api/OnRequestHandler-e645076f#attrs.handle}",
+          "publisher": "\${wsim#root/my_api#attrs.handle}",
+          "subscriber": "\${wsim#root/my_api/OnRequestHandler-e645076f#attrs.handle}",
           "subscriptionProps": {
             "routes": [
               {
@@ -363,8 +363,8 @@ return class Handler {
         "attrs": {},
         "path": "root/my_api/ApiEventMapping-e645076f",
         "props": {
-          "publisher": "\${root/my_api#attrs.handle}",
-          "subscriber": "\${root/my_api/OnRequestHandler-e645076f#attrs.handle}",
+          "publisher": "\${wsim#root/my_api#attrs.handle}",
+          "subscriber": "\${wsim#root/my_api/OnRequestHandler-e645076f#attrs.handle}",
           "subscriptionProps": {
             "routes": [
               {
@@ -631,8 +631,8 @@ return class Handler {
         "attrs": {},
         "path": "root/my_api/ApiEventMapping-e645076f",
         "props": {
-          "publisher": "\${root/my_api#attrs.handle}",
-          "subscriber": "\${root/my_api/OnRequestHandler-e645076f#attrs.handle}",
+          "publisher": "\${wsim#root/my_api#attrs.handle}",
+          "subscriber": "\${wsim#root/my_api/OnRequestHandler-e645076f#attrs.handle}",
           "subscriptionProps": {
             "routes": [
               {
@@ -899,8 +899,8 @@ return class Handler {
         "attrs": {},
         "path": "root/my_api/ApiEventMapping-e645076f",
         "props": {
-          "publisher": "\${root/my_api#attrs.handle}",
-          "subscriber": "\${root/my_api/OnRequestHandler-e645076f#attrs.handle}",
+          "publisher": "\${wsim#root/my_api#attrs.handle}",
+          "subscriber": "\${wsim#root/my_api/OnRequestHandler-e645076f#attrs.handle}",
           "subscriptionProps": {
             "routes": [
               {
@@ -1167,8 +1167,8 @@ return class Handler {
         "attrs": {},
         "path": "root/my_api/ApiEventMapping-e645076f",
         "props": {
-          "publisher": "\${root/my_api#attrs.handle}",
-          "subscriber": "\${root/my_api/OnRequestHandler-e645076f#attrs.handle}",
+          "publisher": "\${wsim#root/my_api#attrs.handle}",
+          "subscriber": "\${wsim#root/my_api/OnRequestHandler-e645076f#attrs.handle}",
           "subscriptionProps": {
             "routes": [
               {
@@ -1435,8 +1435,8 @@ return class Handler {
         "attrs": {},
         "path": "root/my_api/ApiEventMapping-e645076f",
         "props": {
-          "publisher": "\${root/my_api#attrs.handle}",
-          "subscriber": "\${root/my_api/OnRequestHandler-e645076f#attrs.handle}",
+          "publisher": "\${wsim#root/my_api#attrs.handle}",
+          "subscriber": "\${wsim#root/my_api/OnRequestHandler-e645076f#attrs.handle}",
           "subscriptionProps": {
             "routes": [
               {
@@ -1811,8 +1811,8 @@ return class Handler {
         "attrs": {},
         "path": "root/my_api/ApiEventMapping-e645076f",
         "props": {
-          "publisher": "\${root/my_api#attrs.handle}",
-          "subscriber": "\${root/my_api/OnRequestHandler-e645076f#attrs.handle}",
+          "publisher": "\${wsim#root/my_api#attrs.handle}",
+          "subscriber": "\${wsim#root/my_api/OnRequestHandler-e645076f#attrs.handle}",
           "subscriptionProps": {
             "routes": [
               {
@@ -2016,9 +2016,9 @@ exports[`api with 'name' & 'age' parameter 1`] = `
   "Server listening on http://127.0.0.1:<port>",
   "@winglang/sdk.cloud.Api created.",
   "@winglang/sdk.sim.EventMapping created.",
-  "Processing \\"GET /{name}/{age}\\" params={\\"name\\":\\"akhil\\",\\"age\\":\\"23\\"}).",
+  "Processing \\"GET /:name/:age\\" params={\\"name\\":\\"akhil\\",\\"age\\":\\"23\\"}).",
   "Invoke (payload={\\"headers\\":{\\"host\\":\\"127.0.0.1:<port>\\",\\"connection\\":\\"keep-alive\\",\\"accept\\":\\"*/*\\",\\"accept-language\\":\\"*\\",\\"sec-fetch-mode\\":\\"cors\\",\\"user-agent\\":\\"undici\\",\\"accept-encoding\\":\\"gzip, deflate\\"},\\"body\\":\\"\\",\\"method\\":\\"GET\\",\\"path\\":\\"/akhil/23\\",\\"query\\":{},\\"vars\\":{\\"name\\":\\"akhil\\",\\"age\\":\\"23\\"}}).",
-  "GET /{name}/{age} - 200.",
+  "GET /:name/:age - 200.",
   "@winglang/sdk.sim.EventMapping deleted.",
   "Closing server on http://127.0.0.1:<port>",
   "@winglang/sdk.cloud.Api deleted.",
@@ -2084,7 +2084,7 @@ return class Handler {
             "paths": {
               "/{name}/{age}": {
                 "get": {
-                  "operationId": "get-{name}/{age}",
+                  "operationId": "get-:name/:age",
                   "parameters": [
                     {
                       "in": "path",
@@ -2120,13 +2120,13 @@ return class Handler {
         "attrs": {},
         "path": "root/my_api/ApiEventMapping-e645076f",
         "props": {
-          "publisher": "\${root/my_api#attrs.handle}",
-          "subscriber": "\${root/my_api/OnRequestHandler-e645076f#attrs.handle}",
+          "publisher": "\${wsim#root/my_api#attrs.handle}",
+          "subscriber": "\${wsim#root/my_api/OnRequestHandler-e645076f#attrs.handle}",
           "subscriptionProps": {
             "routes": [
               {
                 "method": "GET",
-                "path": "/{name}/{age}",
+                "path": "/:name/:age",
               },
             ],
           },
@@ -2264,7 +2264,7 @@ return class Handler {
               "display": {
                 "description": "A cloud function (FaaS)",
                 "sourceModule": "@winglang/sdk",
-                "title": "GET /{name}/{age}",
+                "title": "GET /:name/:age",
               },
               "id": "OnRequestHandler-e645076f",
               "path": "root/my_api/OnRequestHandler-e645076f",
@@ -2301,9 +2301,9 @@ exports[`api with 'name' parameter 1`] = `
   "Server listening on http://127.0.0.1:<port>",
   "@winglang/sdk.cloud.Api created.",
   "@winglang/sdk.sim.EventMapping created.",
-  "Processing \\"GET /{name}\\" params={\\"name\\":\\"akhil\\"}).",
+  "Processing \\"GET /:name\\" params={\\"name\\":\\"akhil\\"}).",
   "Invoke (payload={\\"headers\\":{\\"host\\":\\"127.0.0.1:<port>\\",\\"connection\\":\\"keep-alive\\",\\"accept\\":\\"*/*\\",\\"accept-language\\":\\"*\\",\\"sec-fetch-mode\\":\\"cors\\",\\"user-agent\\":\\"undici\\",\\"accept-encoding\\":\\"gzip, deflate\\"},\\"body\\":\\"\\",\\"method\\":\\"GET\\",\\"path\\":\\"/akhil\\",\\"query\\":{},\\"vars\\":{\\"name\\":\\"akhil\\"}}).",
-  "GET /{name} - 200.",
+  "GET /:name - 200.",
   "@winglang/sdk.sim.EventMapping deleted.",
   "Closing server on http://127.0.0.1:<port>",
   "@winglang/sdk.cloud.Api deleted.",
@@ -2369,7 +2369,7 @@ return class Handler {
             "paths": {
               "/{name}": {
                 "get": {
-                  "operationId": "get-{name}",
+                  "operationId": "get-:name",
                   "parameters": [
                     {
                       "in": "path",
@@ -2397,13 +2397,13 @@ return class Handler {
         "attrs": {},
         "path": "root/my_api/ApiEventMapping-e645076f",
         "props": {
-          "publisher": "\${root/my_api#attrs.handle}",
-          "subscriber": "\${root/my_api/OnRequestHandler-e645076f#attrs.handle}",
+          "publisher": "\${wsim#root/my_api#attrs.handle}",
+          "subscriber": "\${wsim#root/my_api/OnRequestHandler-e645076f#attrs.handle}",
           "subscriptionProps": {
             "routes": [
               {
                 "method": "GET",
-                "path": "/{name}",
+                "path": "/:name",
               },
             ],
           },
@@ -2541,7 +2541,7 @@ return class Handler {
               "display": {
                 "description": "A cloud function (FaaS)",
                 "sourceModule": "@winglang/sdk",
-                "title": "GET /{name}",
+                "title": "GET /:name",
               },
               "id": "OnRequestHandler-e645076f",
               "path": "root/my_api/OnRequestHandler-e645076f",
@@ -2659,8 +2659,8 @@ return class Handler {
         "attrs": {},
         "path": "root/my_api/ApiEventMapping-e645076f",
         "props": {
-          "publisher": "\${root/my_api#attrs.handle}",
-          "subscriber": "\${root/my_api/OnRequestHandler-e645076f#attrs.handle}",
+          "publisher": "\${wsim#root/my_api#attrs.handle}",
+          "subscriber": "\${wsim#root/my_api/OnRequestHandler-e645076f#attrs.handle}",
           "subscriptionProps": {
             "routes": [
               {
@@ -2968,8 +2968,8 @@ return class Handler {
         "attrs": {},
         "path": "root/my_api/ApiEventMapping-7c48a9f0",
         "props": {
-          "publisher": "\${root/my_api#attrs.handle}",
-          "subscriber": "\${root/my_api/OnRequestHandler-7c48a9f0#attrs.handle}",
+          "publisher": "\${wsim#root/my_api#attrs.handle}",
+          "subscriber": "\${wsim#root/my_api/OnRequestHandler-7c48a9f0#attrs.handle}",
           "subscriptionProps": {
             "routes": [
               {
@@ -2996,8 +2996,8 @@ return class Handler {
         "attrs": {},
         "path": "root/my_api/ApiEventMapping-f6d90a7f",
         "props": {
-          "publisher": "\${root/my_api#attrs.handle}",
-          "subscriber": "\${root/my_api/OnRequestHandler-f6d90a7f#attrs.handle}",
+          "publisher": "\${wsim#root/my_api#attrs.handle}",
+          "subscriber": "\${wsim#root/my_api/OnRequestHandler-f6d90a7f#attrs.handle}",
           "subscriptionProps": {
             "routes": [
               {
@@ -3340,8 +3340,8 @@ return class Handler {
         "attrs": {},
         "path": "root/my_api/ApiEventMapping-7c48a9f0",
         "props": {
-          "publisher": "\${root/my_api#attrs.handle}",
-          "subscriber": "\${root/my_api/OnRequestHandler-7c48a9f0#attrs.handle}",
+          "publisher": "\${wsim#root/my_api#attrs.handle}",
+          "subscriber": "\${wsim#root/my_api/OnRequestHandler-7c48a9f0#attrs.handle}",
           "subscriptionProps": {
             "routes": [
               {
@@ -3368,8 +3368,8 @@ return class Handler {
         "attrs": {},
         "path": "root/my_api/ApiEventMapping-f6d90a7f",
         "props": {
-          "publisher": "\${root/my_api#attrs.handle}",
-          "subscriber": "\${root/my_api/OnRequestHandler-f6d90a7f#attrs.handle}",
+          "publisher": "\${wsim#root/my_api#attrs.handle}",
+          "subscriber": "\${wsim#root/my_api/OnRequestHandler-f6d90a7f#attrs.handle}",
           "subscriptionProps": {
             "routes": [
               {
@@ -3673,8 +3673,8 @@ return class Handler {
         "attrs": {},
         "path": "root/my_api/ApiEventMapping-e645076f",
         "props": {
-          "publisher": "\${root/my_api#attrs.handle}",
-          "subscriber": "\${root/my_api/OnRequestHandler-e645076f#attrs.handle}",
+          "publisher": "\${wsim#root/my_api#attrs.handle}",
+          "subscriber": "\${wsim#root/my_api/OnRequestHandler-e645076f#attrs.handle}",
           "subscriptionProps": {
             "routes": [
               {
@@ -3854,9 +3854,9 @@ exports[`api with one GET route with request params 1`] = `
   "Server listening on http://127.0.0.1:<port>",
   "@winglang/sdk.cloud.Api created.",
   "@winglang/sdk.sim.EventMapping created.",
-  "Processing \\"GET /users/{name}\\" params={\\"name\\":\\"tsuf\\"}).",
+  "Processing \\"GET /users/:name\\" params={\\"name\\":\\"tsuf\\"}).",
   "Invoke (payload={\\"headers\\":{\\"host\\":\\"127.0.0.1:<port>\\",\\"connection\\":\\"keep-alive\\",\\"accept\\":\\"*/*\\",\\"accept-language\\":\\"*\\",\\"sec-fetch-mode\\":\\"cors\\",\\"user-agent\\":\\"undici\\",\\"accept-encoding\\":\\"gzip, deflate\\"},\\"body\\":\\"\\",\\"method\\":\\"GET\\",\\"path\\":\\"/users/tsuf\\",\\"query\\":{},\\"vars\\":{\\"name\\":\\"tsuf\\"}}).",
-  "GET /users/{name} - 200.",
+  "GET /users/:name - 200.",
   "@winglang/sdk.sim.EventMapping deleted.",
   "Closing server on http://127.0.0.1:<port>",
   "@winglang/sdk.cloud.Api deleted.",
@@ -3922,7 +3922,7 @@ return class Handler {
             "paths": {
               "/users/{name}": {
                 "get": {
-                  "operationId": "get-users/{name}",
+                  "operationId": "get-users/:name",
                   "parameters": [
                     {
                       "in": "path",
@@ -3950,13 +3950,13 @@ return class Handler {
         "attrs": {},
         "path": "root/my_api/ApiEventMapping-e645076f",
         "props": {
-          "publisher": "\${root/my_api#attrs.handle}",
-          "subscriber": "\${root/my_api/OnRequestHandler-e645076f#attrs.handle}",
+          "publisher": "\${wsim#root/my_api#attrs.handle}",
+          "subscriber": "\${wsim#root/my_api/OnRequestHandler-e645076f#attrs.handle}",
           "subscriptionProps": {
             "routes": [
               {
                 "method": "GET",
-                "path": "/users/{name}",
+                "path": "/users/:name",
               },
             ],
           },
@@ -4094,7 +4094,7 @@ return class Handler {
               "display": {
                 "description": "A cloud function (FaaS)",
                 "sourceModule": "@winglang/sdk",
-                "title": "GET /users/{name}",
+                "title": "GET /users/:name",
               },
               "id": "OnRequestHandler-e645076f",
               "path": "root/my_api/OnRequestHandler-e645076f",
@@ -4218,8 +4218,8 @@ return class Handler {
         "attrs": {},
         "path": "root/my_api/ApiEventMapping-e645076f",
         "props": {
-          "publisher": "\${root/my_api#attrs.handle}",
-          "subscriber": "\${root/my_api/OnRequestHandler-e645076f#attrs.handle}",
+          "publisher": "\${wsim#root/my_api#attrs.handle}",
+          "subscriber": "\${wsim#root/my_api/OnRequestHandler-e645076f#attrs.handle}",
           "subscriptionProps": {
             "routes": [
               {

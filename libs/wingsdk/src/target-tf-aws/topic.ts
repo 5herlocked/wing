@@ -9,6 +9,7 @@ import * as core from "../core";
 import { convertBetweenHandlers } from "../shared/convert";
 import { NameOptions, ResourceNames } from "../shared/resource-names";
 import { calculateTopicPermissions } from "../shared-aws/permissions";
+import { IAwsTopic } from "../shared-aws/topic";
 import { IInflightHost, Node, Resource } from "../std";
 
 /**
@@ -25,7 +26,7 @@ const NAME_OPTS: NameOptions = {
  *
  * @inflight `@winglang/sdk.cloud.ITopicClient`
  */
-export class Topic extends cloud.Topic {
+export class Topic extends cloud.Topic implements IAwsTopic {
   private readonly topic: SnsTopic;
   /**
    * Topic's publishing permissions. can be use as a dependency of another resource.
@@ -39,13 +40,6 @@ export class Topic extends cloud.Topic {
     this.topic = new SnsTopic(this, "Default", {
       name: ResourceNames.generateName(this, NAME_OPTS),
     });
-  }
-
-  /**
-   * Topic's arn
-   */
-  public get arn(): string {
-    return this.topic.arn;
   }
 
   public onMessage(
@@ -64,7 +58,7 @@ export class Topic extends cloud.Topic {
       "TopicOnMessageHandlerClient"
     );
 
-    const fn = Function._newFunction(
+    const fn = new Function(
       this.node.scope!, // ok since we're not a tree root
       `${this.node.id}-OnMessage-${hash}`,
       functionHandler,
@@ -82,7 +76,7 @@ export class Topic extends cloud.Topic {
       {
         topicArn: this.topic.arn,
         protocol: "lambda",
-        endpoint: fn.arn,
+        endpoint: fn.functionArn,
       }
     );
 
@@ -155,8 +149,20 @@ export class Topic extends cloud.Topic {
       [`process.env["${this.envName()}"]`]
     );
   }
+  /** @internal */
+  public _supportedOps(): string[] {
+    return [cloud.TopicInflightMethods.PUBLISH];
+  }
 
   private envName(): string {
     return `TOPIC_ARN_${this.node.addr.slice(-8)}`;
+  }
+
+  public get topicArn(): string {
+    return this.topic.arn;
+  }
+
+  public get topicName(): string {
+    return this.topic.name;
   }
 }

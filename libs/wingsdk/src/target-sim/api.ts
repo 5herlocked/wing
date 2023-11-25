@@ -50,7 +50,7 @@ export class Api extends cloud.Api implements ISimulatorResource {
       return existingFn;
     }
 
-    const fn = Function._newFunction(this, fnPath, inflight, props) as Function;
+    const fn = new Function(this, fnPath, inflight, props) as Function;
     Node.of(fn).sourceModule = SDK_SOURCE_MODULE;
     Node.of(fn).title = `${method.toUpperCase()} ${path}`;
 
@@ -206,7 +206,7 @@ export class Api extends cloud.Api implements ISimulatorResource {
       type: cloud.API_FQN,
       path: this.node.path,
       props: {
-        openApiSpec: this._getApiSpec(),
+        openApiSpec: this._getOpenApiSpec(),
         corsHeaders: this._generateCorsHeaders(this.corsOptions),
       },
       attrs: {} as any,

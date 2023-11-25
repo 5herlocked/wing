@@ -1,7 +1,7 @@
 import { Construct, IConstruct } from "constructs";
 import { Duration } from "./duration";
 import { App } from "../core";
-import { NotImplementedError } from "../core/errors";
+import { NotImplementedError, AbstractMemberError } from "../core/errors";
 import { liftObject } from "../core/internal";
 import { log } from "../shared/log";
 import { Node } from "../std";
@@ -174,10 +174,51 @@ export abstract class Resource extends Construct implements IResource {
     );
   }
 
+  /**
+   * Create an instance of this resource with the current App factory.
+   * This is commonly used in the constructor of a pseudo-abstract resource class before the super() call.
+   *
+   * @example
+   * ```ts
+   * export class MyResource extends Resource {
+   *   constructor(scope: Construct, id: string, props: MyResourceProps) {
+   *     if (new.target === MyResource) {
+   *      return MyResource._newFromFactory(MYRESOURCE_FQN, scope, id, props);
+   *     }
+   *     super(scope, id);
+   *     // ...
+   *  ```
+   *
+   * @internal
+   */
+  protected static _newFromFactory<TResource extends Resource>(
+    fqn: string,
+    scope: Construct,
+    id: string,
+    ...props: any[]
+  ): TResource {
+    return App.of(scope).newAbstract(fqn, scope, id, ...props);
+  }
+
   private readonly onLiftMap: Map<IInflightHost, Set<string>> = new Map();
 
-  /** @internal */
-  public abstract _supportedOps(): string[];
+  /**
+   * @internal
+   * @abstract
+   * */
+  public _supportedOps(): string[] {
+    throw new AbstractMemberError();
+  }
+
+  /**
+   * Return a code snippet that can be used to reference this resource inflight.
+   *
+   * @internal
+   * @abstract
+   */
+  public _toInflight(): string {
+    throw new AbstractMemberError();
+  }
 
   /**
    * A hook called by the Wing compiler once for each inflight host that needs to
@@ -267,13 +308,6 @@ export abstract class Resource extends Construct implements IResource {
       this.onLift(host, Array.from(ops));
     }
   }
-
-  /**
-   * Return a code snippet that can be used to reference this resource inflight.
-   *
-   * @internal
-   */
-  public abstract _toInflight(): string;
 
   /**
    * "Lifts" a value into an inflight context. If the value is a resource (i.e. has a `_toInflight`

@@ -19,6 +19,7 @@ import {
   NameOptions,
   ResourceNames,
 } from "../shared/resource-names";
+import { IAwsApi } from "../shared-aws";
 import { IInflightHost, Node } from "../std";
 
 /**
@@ -37,13 +38,13 @@ const NAME_OPTS: NameOptions = {
 /**
  * AWS Implementation of `cloud.Api`.
  */
-export class Api extends cloud.Api {
+export class Api extends cloud.Api implements IAwsApi {
   private readonly api: WingRestApi;
 
   constructor(scope: Construct, id: string, props: cloud.ApiProps = {}) {
     super(scope, id, props);
     this.api = new WingRestApi(this, "api", {
-      apiSpec: this._getApiSpec(),
+      getApiSpec: this._getOpenApiSpec.bind(this),
       cors: this.corsOptions,
     });
   }
@@ -254,7 +255,7 @@ export class Api extends cloud.Api {
           ?.defaultResponse,
       }
     );
-    return Function._newFunction(
+    return new Function(
       this,
       `${this.node.id}-OnRequest-${inflightNodeHash}`,
       functionHandler
@@ -289,6 +290,30 @@ export class Api extends cloud.Api {
       case: CaseConventions.UPPERCASE,
     });
   }
+
+  public get restApiArn(): string {
+    return this.api.api.executionArn;
+  }
+
+  public get restApiId(): string {
+    return this.api.api.id;
+  }
+
+  public get restApiName(): string {
+    return this.api.api.name;
+  }
+
+  public get stageName(): string {
+    return this.api.stage.stageName;
+  }
+
+  public get invokeUrl(): string {
+    return this.api.stage.invokeUrl;
+  }
+
+  public get deploymentId(): string {
+    return this.api.deployment.id;
+  }
 }
 
 /**
@@ -298,14 +323,14 @@ class WingRestApi extends Construct {
   public readonly url: string;
   public readonly api: ApiGatewayRestApi;
   public readonly stage: ApiGatewayStage;
-  private readonly deployment: ApiGatewayDeployment;
+  public readonly deployment: ApiGatewayDeployment;
   private readonly region: string;
 
   constructor(
     scope: Construct,
     id: string,
     props: {
-      apiSpec: OpenApiSpec;
+      getApiSpec: () => OpenApiSpec;
       cors?: cloud.ApiCorsOptions;
     }
   ) {
@@ -314,7 +339,7 @@ class WingRestApi extends Construct {
 
     const defaultResponse = API_CORS_DEFAULT_RESPONSE(props.cors);
 
-    this.api = new ApiGatewayRestApi(this, "api", {
+    this.api = new ApiGatewayRestApi(this, `${id}`, {
       name: ResourceNames.generateName(this, NAME_OPTS),
       // Lazy generation of the api spec because routes can be added after the API is created
       body: Lazy.stringValue({
@@ -326,9 +351,12 @@ class WingRestApi extends Construct {
             };
             return openApiSpec;
           };
-          return JSON.stringify(injectGreedy404Handler(props.apiSpec));
+          return JSON.stringify(injectGreedy404Handler(props.getApiSpec()));
         },
       }),
+      lifecycle: {
+        createBeforeDestroy: true,
+      },
     });
 
     this.deployment = new ApiGatewayDeployment(this, "deployment", {
@@ -348,8 +376,11 @@ class WingRestApi extends Construct {
       deploymentId: this.deployment.id,
     });
 
-    //should be exported from here, otherwise won't be mapped to the right token
-    this.url = this.stage.invokeUrl;
+    // Intentionally not using `this.stage.invokeUrl`, it looks like it's shared with
+    // the `invokeUrl` from the api deployment, which gets recreated on every deployment.
+    // When this `invokeUrl` is referenced somewhere else in the stack, it can cause cyclic dependencies
+    // in Terraform. Hence, we're creating our own url here.
+    this.url = `https://${this.api.id}.execute-api.${this.region}.amazonaws.com/${this.stage.stageName}`;
   }
 
   /**
@@ -373,7 +404,7 @@ class WingRestApi extends Construct {
   private createApiSpecExtension(handler: Function) {
     const extension = {
       "x-amazon-apigateway-integration": {
-        uri: `arn:aws:apigateway:${this.region}:lambda:path/2015-03-31/functions/${handler.arn}/invocations`,
+        uri: `arn:aws:apigateway:${this.region}:lambda:path/2015-03-31/functions/${handler.functionArn}/invocations`,
         type: "aws_proxy",
         httpMethod: "POST",
         responses: {
@@ -405,9 +436,11 @@ class WingRestApi extends Construct {
     new LambdaPermission(this, `permission-${permissionId}`, {
       statementId: `AllowExecutionFromAPIGateway-${permissionId}`,
       action: "lambda:InvokeFunction",
-      functionName: handler._functionName,
+      functionName: handler.functionName,
       principal: "apigateway.amazonaws.com",
-      sourceArn: `${this.api.executionArn}/*/${method}${path}`,
+      sourceArn: `${this.api.executionArn}/*/${method}${Api._toOpenApiPath(
+        path
+      )}`,
     });
   };
 }
