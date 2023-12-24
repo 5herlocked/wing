@@ -47,20 +47,7 @@ module.exports = function({ $strToStr }) {
       "stackName": "root",
       "version": "0.17.0"
     },
-    "outputs": {
-      "root": {
-        "Default": {
-          "cloud.TestRunner": {
-            "TestFunctionArns": "WING_TEST_RUNNER_FUNCTION_IDENTIFIERS"
-          }
-        }
-      }
-    }
-  },
-  "output": {
-    "WING_TEST_RUNNER_FUNCTION_IDENTIFIERS": {
-      "value": "[]"
-    }
+    "outputs": {}
   },
   "provider": {
     "aws": [
@@ -178,7 +165,7 @@ module.exports = function({ $strToStr }) {
         "memory_size": 1024,
         "publish": true,
         "role": "${aws_iam_role.func_IamRole_EED2D17C.arn}",
-        "runtime": "nodejs18.x",
+        "runtime": "nodejs20.x",
         "s3_bucket": "${aws_s3_bucket.Code.bucket}",
         "s3_key": "${aws_s3_object.func_S3Object_82AC2651.key}",
         "timeout": 60,
@@ -209,7 +196,7 @@ module.exports = function({ $strToStr }) {
         "memory_size": 1024,
         "publish": true,
         "role": "${aws_iam_role.strToStr_IamRole_3B9A4F9A.arn}",
-        "runtime": "nodejs18.x",
+        "runtime": "nodejs20.x",
         "s3_bucket": "${aws_s3_bucket.Code.bucket}",
         "s3_key": "${aws_s3_object.strToStr_S3Object_1E7679F7.key}",
         "timeout": 60,

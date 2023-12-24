@@ -119,15 +119,7 @@ module.exports = function({  }) {
       "stackName": "root",
       "version": "0.17.0"
     },
-    "outputs": {
-      "root": {
-        "Default": {
-          "cloud.TestRunner": {
-            "TestFunctionArns": "WING_TEST_RUNNER_FUNCTION_IDENTIFIERS"
-          }
-        }
-      }
-    }
+    "outputs": {}
   },
   "data": {
     "aws_lambda_invocation": {
@@ -142,11 +134,6 @@ module.exports = function({  }) {
         "function_name": "${aws_lambda_function.file1Store_cloudOnDeploy_Function_9539541F.function_name}",
         "input": "{}"
       }
-    }
-  },
-  "output": {
-    "WING_TEST_RUNNER_FUNCTION_IDENTIFIERS": {
-      "value": "[]"
     }
   },
   "provider": {
@@ -226,7 +213,7 @@ module.exports = function({  }) {
         "memory_size": 1024,
         "publish": true,
         "role": "${aws_iam_role.file1Store_cloudOnDeploy_Function_IamRole_233573CC.arn}",
-        "runtime": "nodejs18.x",
+        "runtime": "nodejs20.x",
         "s3_bucket": "${aws_s3_bucket.Code.bucket}",
         "s3_key": "${aws_s3_object.file1Store_cloudOnDeploy_Function_S3Object_CBBF816B.key}",
         "timeout": 60,

@@ -221,20 +221,7 @@ module.exports = function({  }) {
       "stackName": "root",
       "version": "0.17.0"
     },
-    "outputs": {
-      "root": {
-        "Default": {
-          "cloud.TestRunner": {
-            "TestFunctionArns": "WING_TEST_RUNNER_FUNCTION_IDENTIFIERS"
-          }
-        }
-      }
-    }
-  },
-  "output": {
-    "WING_TEST_RUNNER_FUNCTION_IDENTIFIERS": {
-      "value": "[]"
-    }
+    "outputs": {}
   },
   "provider": {
     "aws": [
@@ -423,7 +410,7 @@ module.exports = function({  }) {
         "memory_size": 1024,
         "publish": true,
         "role": "${aws_iam_role.BigPublisher_b2_oncreate-OnMessage0_IamRole_FF154497.arn}",
-        "runtime": "nodejs18.x",
+        "runtime": "nodejs20.x",
         "s3_bucket": "${aws_s3_bucket.Code.bucket}",
         "s3_key": "${aws_s3_object.BigPublisher_b2_oncreate-OnMessage0_S3Object_1489E104.key}",
         "timeout": 60,
@@ -455,7 +442,7 @@ module.exports = function({  }) {
         "memory_size": 1024,
         "publish": true,
         "role": "${aws_iam_role.BigPublisher_cloudQueue-SetConsumer0_IamRole_80E6DDE5.arn}",
-        "runtime": "nodejs18.x",
+        "runtime": "nodejs20.x",
         "s3_bucket": "${aws_s3_bucket.Code.bucket}",
         "s3_key": "${aws_s3_object.BigPublisher_cloudQueue-SetConsumer0_S3Object_BC15A90B.key}",
         "timeout": "${aws_sqs_queue.BigPublisher_cloudQueue_2EE8871A.visibility_timeout_seconds}",
@@ -487,7 +474,7 @@ module.exports = function({  }) {
         "memory_size": 1024,
         "publish": true,
         "role": "${aws_iam_role.BigPublisher_cloudTopic-OnMessage0_IamRole_818FEA46.arn}",
-        "runtime": "nodejs18.x",
+        "runtime": "nodejs20.x",
         "s3_bucket": "${aws_s3_bucket.Code.bucket}",
         "s3_key": "${aws_s3_object.BigPublisher_cloudTopic-OnMessage0_S3Object_A4DC7356.key}",
         "timeout": 60,
