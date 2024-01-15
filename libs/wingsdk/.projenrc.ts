@@ -71,6 +71,7 @@ const project = new cdk.JsiiProject({
     "@aws-sdk/client-elasticache@3.449.0",
     "@aws-sdk/util-dynamodb@3.449.0",
     "@aws-sdk/client-lambda@3.449.0",
+    "@aws-sdk/client-kinesis@3.449.0",
     "@aws-sdk/client-secrets-manager@3.449.0",
     "@aws-sdk/client-sqs@3.449.0",
     "@aws-sdk/client-sns@3.449.0",
