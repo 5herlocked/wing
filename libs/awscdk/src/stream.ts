@@ -37,7 +37,7 @@ export class Stream extends cloud.Stream {
       cloud.StreamInflightMethods.GET,
     ];
   }
-  public setConsumer(inflight: cloud.IStreamSetConsumerHandlerClient, props?: any = {}): cloud.Function {
+  public setConsumer(inflight: cloud.IStreamSetConsumerHandlerClient, props?: any): cloud.Function {
 
     const functionHandler = convertBetweenHandlers(
       inflight,

@@ -14,7 +14,7 @@ export class StreamSetConsumerHandlerClient implements IStreamSetConsumerHandler
     // for each data in event
     for (const data of event) {
       // call handler
-      await this.handler.handle(data);
+      await this.handler.handle(data.data.asStr());
     }
   }
 }
